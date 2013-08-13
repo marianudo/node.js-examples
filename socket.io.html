@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+		<script>
+			$(function() {
+			  // Websocket creation
+			  var socket = io.connect('http://localhost:8080');
+			  console.log("WebSocket connected: " + socket);
+			  
+			  //Reply to goodbye reply
+			  socket.on("byeReply", function(message) {
+			  	alert("Client said: " + message);
+			  });
+			  
+			  //Configure hello event for emitting
+			  $('#hi').on('click', function() {
+			    console.log(socket);
+			  	socket.emit("hi", "Hello from client");
+			  });
+			  
+			  //Configure bye event for emitting
+			  $('#bye').on('click', function() {
+			  	alert("Said bye");
+			  	socket.emit("bye", "By from client");
+			  });
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Chat; just another one silly example of websockets usage with node.js</h1>
+		<input type="button" value="Hi event" id="hi" />
+		<br/>
+		<input type="button" value="Bye event" id="bye" />
+	</body>
+</html>
