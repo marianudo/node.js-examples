@@ -15,6 +15,10 @@
 			  //Reply to goodbye reply
 			  socket.on("byeReply", reply);
 			  
+			  socket.on('valueAlreadySetted', function() {
+			    alert("Value already setted on server\nDid you click this button twice?");
+			  });
+			  
 			  //Configure hello event for emitting
 			  $('#hi').on('click', function() {
 			    console.log(socket);
@@ -25,6 +29,11 @@
 			  $('#bye').on('click', function() {
 			  	socket.emit("bye", "By from client");
 			  });
+			  
+			  //Configure event for setting value in server for this websocket connection
+			  $('#setValue').on('click', function() {
+			  	socket.emit('setValue');
+		  	  });
 			});
 		</script>
 	</head>
@@ -33,5 +42,7 @@
 		<input type="button" value="Hi event" id="hi" />
 		<br/>
 		<input type="button" value="Bye event" id="bye" />
+		<br/>
+		<input type="button" value="Set value on server" id="setValue" />
 	</body>
 </html>
