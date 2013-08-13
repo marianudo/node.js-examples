@@ -8,10 +8,12 @@
 			  var socket = io.connect('http://localhost:8080');
 			  console.log("WebSocket connected: " + socket);
 			  
+			  var reply = function(message) {
+			  	alert("Served said: " + message);
+			  }
+			  
 			  //Reply to goodbye reply
-			  socket.on("byeReply", function(message) {
-			  	alert("Client said: " + message);
-			  });
+			  socket.on("byeReply", reply);
 			  
 			  //Configure hello event for emitting
 			  $('#hi').on('click', function() {
@@ -21,14 +23,13 @@
 			  
 			  //Configure bye event for emitting
 			  $('#bye').on('click', function() {
-			  	alert("Said bye");
 			  	socket.emit("bye", "By from client");
 			  });
 			});
 		</script>
 	</head>
 	<body>
-		<h1>Chat; just another one silly example of websockets usage with node.js</h1>
+		<h1>Just another one silly example of websockets usage with node.js</h1>
 		<input type="button" value="Hi event" id="hi" />
 		<br/>
 		<input type="button" value="Bye event" id="bye" />

@@ -17,7 +17,7 @@ io.sockets.on('connection', function(socket) {
 	console.log("Client connected");
 	
 	socket.on("hi", function(greeting) {
-		console.log("Client said: " + greeting);
+		console.log("Server echoed: " + greeting);
 	});
 	
 	socket.on("bye", function(message) {

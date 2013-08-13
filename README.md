@@ -19,9 +19,12 @@ This is a proof of concept of real-time web communication through events and web
 
 
 ## Usage
+Clone the repo, and inside it's directory type:
+
 	npm install socket.io@0.9.x
 	npm install express@3.3.x
 	node socket.io.sample.js
+	open http://localhost:8080
 
 
 ## Developing
